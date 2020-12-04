@@ -5,6 +5,15 @@ namespace ConsoleApp1
 {
     class Program
     {
+
+        static void OpenBrowser(string url)
+        {
+            var procStartInfo = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe")
+            {
+                Arguments = url
+            };
+            Process.Start(procStartInfo);
+        }
         static void Main()
         {
             try
@@ -44,13 +53,8 @@ namespace ConsoleApp1
                             File.WriteAllText(result, content);
                             Console.WriteLine("Path:" + result + "\nContent:" + content);
                             break;
-
                         case "/git":
-                            var procStartInfo = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe")
-                            {
-                                Arguments = "https://github.com/Olshan"
-                            };
-                            Process.Start(procStartInfo);
+                            OpenBrowser("https://github.com/Olshan");
                             break;
                         case "/exit":
                             break;
